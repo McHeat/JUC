@@ -1,5 +1,4 @@
-package com.mcheat.juc.semaphore.taste.permits;
-
+package com.mcheat.juc.semaphore.taste.tryacq;
 
 /**
  * @Author McHeat

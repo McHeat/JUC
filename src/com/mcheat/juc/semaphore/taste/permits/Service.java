@@ -12,7 +12,7 @@ public class Service {
     /**
      * 公平锁方式的Semaphore，增加permits数量可允许同一时间多线程执行acquire()和release()
      */
-    private Semaphore semaphore = new Semaphore(2, true);
+    private Semaphore semaphore = new Semaphore(1, true);
 
     /**
      * 锁获取与释放
@@ -22,6 +22,7 @@ public class Service {
             semaphore.acquire();
             System.out.println(Thread.currentThread().getName() + " begin timer=" + System.currentTimeMillis());
             Thread.sleep(5000);
+            System.out.println("还有大约" + semaphore.getQueueLength() + "个线程在等待");
             System.out.println(Thread.currentThread().getName() + " end timer=" + System.currentTimeMillis());
             semaphore.release();
         } catch (InterruptedException e) {
